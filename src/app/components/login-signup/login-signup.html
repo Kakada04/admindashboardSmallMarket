@@ -1,0 +1,185 @@
+<div class="w-full h-full justify-items-center">
+  <div class="text-center mt-20">
+    <label class="text-3xl font-bold text-center dark:text-indigo-100">
+      Admin Dashboard
+    </label>
+  </div>
+  <div class="w-lg h-full p-4 shadow-sm rounded-2xl dark:shadow-indigo-500 mt-10 space-y-10">
+    <div class="w-full mt-10 text-center z-20">
+      <label class="animate-zoom-in text-6xl dark:text-indigo-100 ml-2.5 stroke-amber-50 font-bold">
+        {{ login ? 'Login' : 'Signup' }}
+      </label>
+      <label class="animate-zoom-in text-2xl font-semibold dark:text-indigo-500 mt-2 cursor-pointer underline"
+        (click)="login = !login">
+        or {{ !login ? 'Login' : 'Signup' }}
+      </label>
+    </div>
+
+    <!-- Login Form -->
+    <form *ngIf="login" class="max-w-sm mx-auto md-10 animate-zoom-in" (ngSubmit)="onLoginSubmit()" #loginForm="ngForm"
+      name="loginForm">
+      <div class="mb-5">
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+        <input type="email" id="email" name="email" [(ngModel)]="loginData.gmail"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="name@flowbite.com" required />
+      </div>
+      <div class="mb-5">
+        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
+        <input type="password" name="password" [(ngModel)]="loginData.password" id="password"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required />
+      </div>
+      <button type="submit"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        Submit
+      </button>
+    </form>
+
+    <!-- Signup Form -->
+    <form *ngIf="!login" [formGroup]="signupForm" (ngSubmit)="onSignupSubmit()" class="w-auto h-auto animate-zoom-in">
+      <div class="relative z-0 w-full mb-5 group">
+        <input type="text" formControlName="first_name" id="first_name"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" " required />
+        <label for="first_name"
+          class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+          First name
+        </label>
+        <div *ngIf="signupForm.get('first_name')?.touched && signupForm.get('first_name')?.invalid"
+          class="text-red-500 text-sm">
+          First name is required and must be at least 2 characters.
+        </div>
+      </div>
+      <div class="relative z-0 w-full mb-5 group">
+        <input type="text" formControlName="last_name" id="last_name"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" " required />
+        <label for="last_name"
+          class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+          Last name
+        </label>
+        <div *ngIf="signupForm.get('last_name')?.touched && signupForm.get('last_name')?.invalid"
+          class="text-red-500 text-sm">
+          Last name is required and must be at least 2 characters.
+        </div>
+      </div>
+      <div class="relative z-0 w-full mb-5 group">
+        <select formControlName="gender" id="gender"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          required>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+        <label for="gender"
+          class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+          Gender
+        </label>
+        <div *ngIf="signupForm.get('gender')?.touched && signupForm.get('gender')?.invalid"
+          class="text-red-500 text-sm">
+          Gender is required.
+        </div>
+      </div>
+      <div class="relative z-0 w-full mb-5 group">
+        <input type="email" formControlName="gmail" id="gmail"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" " required />
+        <label for="gmail"
+          class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+          Email address
+        </label>
+        <div *ngIf="signupForm.get('gmail')?.touched && signupForm.get('gmail')?.invalid" class="text-red-500 text-sm">
+          <div *ngIf="signupForm.get('gmail')?.errors?.['required']">Email is required.</div>
+          <div *ngIf="signupForm.get('gmail')?.errors?.['email']">Invalid email format.</div>
+        </div>
+      </div>
+      <div class="relative z-0 w-full mb-5 group">
+        <input type="password" formControlName="password" id="password"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" " required />
+        <label for="password"
+          class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+          Password
+        </label>
+        <div *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.invalid"
+          class="text-red-500 text-sm">
+          Password is required and must be at least 6 characters.
+        </div>
+      </div>
+      <div class="relative z-0 w-full mb-5 group">
+        <input type="password" formControlName="confirmPassword" id="confirm_password"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" " required />
+        <label for="confirm_password"
+          class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+          Confirm password
+        </label>
+        <div *ngIf="signupForm.get('confirmPassword')?.touched && signupForm.get('confirmPassword')?.invalid"
+          class="text-red-500 text-sm">
+          Confirm password is required.
+        </div>
+        <div *ngIf="signupForm.touched && signupForm.errors?.['mismatch']" class="text-red-500 text-sm">
+          Passwords do not match.
+        </div>
+      </div>
+      <div class="relative z-0 w-full mb-5 group">
+        <input type="tel" formControlName="phone_number" id="phone_number"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" " required />
+        <label for="phone_number"
+          class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+          Phone number
+        </label>
+        <div *ngIf="signupForm.get('phone_number')?.touched && signupForm.get('phone_number')?.invalid"
+          class="text-red-500 text-sm">
+          <div *ngIf="signupForm.get('phone_number')?.errors?.['required']">Phone number is required.</div>
+          <div *ngIf="signupForm.get('phone_number')?.errors?.['pattern']">Phone number must be 8–10 digits.</div>
+        </div>
+      </div>
+      <div class="relative z-0 w-full mb-5 group">
+        <select formControlName="location_id" id="location_id"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          required>
+          <option *ngFor="let loc of locations" [value]="loc.id">{{ loc.location }}</option>
+        </select>
+        <label for="location_id"
+          class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+          Location
+        </label>
+        <div *ngIf="signupForm.get('location_id')?.touched && signupForm.get('location_id')?.invalid"
+          class="text-red-500 text-sm">
+          Location is required.
+        </div>
+      </div>
+      <div class="relative z-0 w-full mb-5 group">
+        <input type="checkbox" formControlName="is_admin" id="is_admin"
+          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600" />
+        <label for="is_admin" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+          Register as Admin
+        </label>
+      </div>
+      <button type="submit" [disabled]="signupForm.invalid"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+
+
+
+<div [ngClass]="loginStatus ? [-'translate-y-10']:['-translate-y-1000']"
+  class="absolute transform transition-all duration-700 ease-in-out  left-0 right-0 z-50 flex items-center justify-center p-4">
+  <div id="toast-simple"
+    class="flex items-center w-full max-w-xs p-4 space-x-4 rtl:space-x-reverse text-gray-500 bg-white divide-x rtl:divide-x-reverse divide-gray-200 rounded-lg shadow-sm dark:text-gray-400 dark:divide-gray-700 dark:bg-gray-700"
+    role="alert">
+    <svg class="w-5 h-5 text-blue-600 dark:text-blue-500 rotate-45" aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="m9 17 8 2L9 1 1 19l8-2Zm0 0V9" />
+    </svg>
+    <div class="ps-4 text-sm font-normal">Message sent successfully.</div>
+  </div>
+
+</div>

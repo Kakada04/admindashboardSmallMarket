@@ -1,0 +1,48 @@
+<!-- Wrapper with class "dark" for dark mode -->
+
+
+
+
+
+@if(visible){
+    
+<!-- Main modal -->
+<div id="default-modal" tabindex="-1" aria-hidden="true" 
+    class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/50"
+>
+  <div class="relative p-4 w-full max-w-2xl">
+    <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
+      
+      <!-- Modal header -->
+      <div class="flex items-center justify-between p-4 border-b rounded-t dark:border-gray-600 border-gray-200">
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Product Details</h3>
+        <button type="button" (click)="hideModal()" class="...">✕</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="text-black dark:text-white">
+        <div class="flex justify-center mt-4">
+          <img [src]="imageUrl+product.banner_img" alt="Product Image" class="h-48 w-auto object-contain" />
+        </div>
+
+        <div class="p-6 space-y-2">
+          <h2 class="text-xl font-semibold">{{ product.product_name }}</h2>
+          <p class="text-sm">Quantity: <span class="font-medium">{{ product.quantity }}</span></p>
+          <p class="text-sm">Cost Price: <span class="font-medium">${{ product.cost_price }}</span></p>
+          <p class="text-sm">Sell Price: <span class="font-medium text-green-400 dark:text-green-300">${{ product.sell_price }}</span></p>
+          <p class="text-sm">Description:</p>
+          <p class="text-sm">{{ product.description }}</p>
+          <p class="text-sm">Date: <span class="font-medium">{{ product.id }}</span></p>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <!-- <div class="flex items-center p-4 border-t border-gray-200 rounded-b dark:border-gray-600">
+        <button type="button" class="...">I accept</button>
+        <button type="button" class="...">Decline</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+}

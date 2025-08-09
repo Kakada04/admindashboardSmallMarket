@@ -1,0 +1,42 @@
+
+    @keyframes slide-in {
+        from {
+            transform: translateY(-100%);
+        }
+
+        to {
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slide-out {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes zoom-in {
+        from {
+            transform: scale(0);
+        }
+
+        to {
+            transform: scale(100%);
+        }
+    }
+
+    .animate-slide-in {
+        animation: slide-in 0.5s ease-out forwards;
+    }
+
+    .animate-slide-out {
+        animation: slide-out 0.5s ease-in forwards;
+    }
+
+    .animate-zoom-in {
+        animation: zoom-in 0.5s ease-out forwards;
+    }

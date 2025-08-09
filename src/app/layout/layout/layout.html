@@ -1,0 +1,370 @@
+<style>
+    @keyframes slide-in {
+        from {
+            transform: translateX(-100%);
+        }
+
+        to {
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slide-out {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes zoom-in {
+        from {
+            transform: translateY(100%);
+        }
+
+        to {
+            transform: translateY(0);
+        }
+    }
+
+    .animate-slide-in {
+        animation: slide-in 0.5s ease-out forwards;
+    }
+
+    .animate-slide-out {
+        animation: slide-out 0.5s ease-in forwards;
+    }
+
+    .animate-zoom-in {
+        animation: zoom-in 0.5s ease-out forwards;
+    }
+</style>
+
+<div class="flex max-sm:flex-col max-lg:flex-col h-screen w-full  ">
+    <div [ngClass]="!menu_visable ? 'animate-slide-in':'animate-slide-out'"
+        class="w-full h-[48px] dark:bg-gray-800 animate-slide-in bg-indigo-600 border-b-1 p-1 border-gray-400 dark:border-gray-400/50 hidden max-sm:block max-lg:block">
+        <button (click)="menuVisable()">
+
+            <div class="w-[24px] h-[64px] mt-2 text-gray-100 dark:text-white ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    class="stroke-current">
+                    <path fill="none" stroke-linecap="round" stroke-width="1.5" d="M20 7H4m11 5H4m5 5H4" />
+                </svg>
+            </div>
+
+
+
+
+        </button>
+    </div>
+    <!-- pc -->
+    <aside
+        class="w-64 h-full bg-gray-200 dark:bg-gray-800 dark:text-white border-r-1 border-amber-50 justify-items-center hidden lg:block animate-slide-in transition-all duration-300">
+        <h1 class="text-[32px] text-gray-700 dark:text-white font-bold p-4 my-4">Admin Panel</h1>
+        <div class="font-semibold hidden text-gray-700 dark:text-white text-[16px] mt-10">Main Menu</div>
+        <nav class="p-4 mt-0">
+            <ul class="flex flex-col  space-y-2">
+                <li [routerLinkActive]="['bg-gray-700','shadow-md','shadow-gray-600', 'text-white', 'dark:bg-gray-300/10', 'dark:shadow-gray-900/30','dark:text-cyan-500']"
+                    [routerLinkActiveOptions]="{ exact: true }" routerLink="/dashboard"
+                    class="w-48 dark:text-cyan-100 dark:hover:text-cyan-400 cursor-pointer text-gray-700 inset-shadow-sm inset-shadow-gray-400 hover:text-white hover:bg-gray-500 hover:inset-shadow-sm hover:inset-shadow-gray-800 dark:inset-shadow-none dark:hover:inset-shadow-none dark:hover:bg-gray-700/50 p-1 rounded-2xl h-10 transform hover:-translate-y-0.5">
+                    <a class="   font-semibold text-[16px] flex flex-row space-x-2.5 mt-1 ml-4"><svg svg
+                            class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M13 8V4q0-.425.288-.712T14 3h6q.425 0 .713.288T21 4v4q0 .425-.288.713T20 9h-6q-.425 0-.712-.288T13 8M3 12V4q0-.425.288-.712T4 3h6q.425 0 .713.288T11 4v8q0 .425-.288.713T10 13H4q-.425 0-.712-.288T3 12m10 8v-8q0-.425.288-.712T14 11h6q.425 0 .713.288T21 12v8q0 .425-.288.713T20 21h-6q-.425 0-.712-.288T13 20M3 20v-4q0-.425.288-.712T4 15h6q.425 0 .713.288T11 16v4q0 .425-.288.713T10 21H4q-.425 0-.712-.288T3 20m2-9h4V5H5zm10 8h4v-6h-4zm0-12h4V5h-4zM5 19h4v-2H5zm4-2" />
+                        </svg><span>Dashboard</span></a>
+                </li>
+                <!-- <li [routerLinkActive]="['bg-gray-700','shadow-md','shadow-gray-600', 'text-white', 'dark:bg-gray-300/10', 'dark:shadow-gray-900/30','dark:text-cyan-500']"
+                    [routerLinkActiveOptions]="{ exact: true }" routerLink="/analyst"
+                    class="w-48 dark:text-cyan-100 dark:hover:text-cyan-400 cursor-pointer text-gray-700 inset-shadow-sm inset-shadow-gray-400 hover:text-white hover:bg-gray-500 hover:inset-shadow-sm hover:inset-shadow-gray-800 dark:inset-shadow-none dark:hover:inset-shadow-none dark:hover:bg-gray-700/50 p-1 rounded-2xl h-10 transform hover:-translate-y-0.5">
+                    <a class="    font-bold text-[16px] flex flex-row space-x-2.5 mt-1 ml-4"><svg class="fill-current"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path
+                                d="M8 12q-.425 0-.712.288T7 13v3q0 .425.288.713T8 17t.713-.288T9 16v-3q0-.425-.288-.712T8 12m8-5q-.425 0-.712.288T15 8v8q0 .425.288.713T16 17t.713-.288T17 16V8q0-.425-.288-.712T16 7m-4 7q-.425 0-.712.288T11 15v1q0 .425.288.713T12 17t.713-.288T13 16v-1q0-.425-.288-.712T12 14m-7 7q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm0-2h14V5H5zM5 5v14zm7 7q.425 0 .713-.288T13 11t-.288-.712T12 10t-.712.288T11 11t.288.713T12 12" />
+                        </svg><span>Analyst</span></a>
+                </li> -->
+                <li [routerLinkActive]="['bg-gray-700','shadow-md','shadow-gray-600', 'text-white', 'dark:bg-gray-300/10', 'dark:shadow-gray-900/30','dark:text-cyan-500']"
+                    [routerLinkActiveOptions]="{ exact: true }" routerLink="/inventory"
+                    class="w-48 dark:text-cyan-100 dark:hover:text-cyan-400 cursor-pointer text-gray-700 inset-shadow-sm inset-shadow-gray-400 hover:text-white hover:bg-gray-500 hover:inset-shadow-sm hover:inset-shadow-gray-800 dark:inset-shadow-none dark:hover:inset-shadow-none dark:hover:bg-gray-700/50 p-1 rounded-2xl h-10 transform hover:-translate-y-0.5">
+                    <a class=" font-bold text-[16px] flex flex-row space-x-2.5 mt-1 ml-4"><svg class="fill-current"
+                            class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M5 5h2v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V5h2v5h2V5c0-1.1-.9-2-2-2h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h6v-2H5zm7-2c.55 0 1 .45 1 1s-.45 1-1 1s-1-.45-1-1s.45-1 1-1" />
+                            <path
+                                d="M21.75 12.25c-.41-.41-1.09-.41-1.5 0L15.51 17l-2.26-2.25c-.41-.41-1.08-.41-1.5 0c-.41.41-.41 1.09 0 1.5l3.05 3.04c.39.39 1.02.39 1.41 0l5.53-5.54c.42-.41.42-1.09.01-1.5" />
+                        </svg><span>Inventory</span></a>
+                </li>
+                <li [routerLinkActive]="['bg-gray-700','shadow-md','shadow-gray-600', 'text-white', 'dark:bg-gray-300/10', 'dark:shadow-gray-900/30','dark:text-cyan-500']"
+                    [routerLinkActiveOptions]="{ exact: true }" routerLink="/customer"
+                    class="w-48 dark:text-cyan-100 dark:hover:text-cyan-400 cursor-pointer text-gray-700 inset-shadow-sm inset-shadow-gray-400 hover:text-white hover:bg-gray-500 hover:inset-shadow-sm hover:inset-shadow-gray-800 dark:inset-shadow-none dark:hover:inset-shadow-none dark:hover:bg-gray-700/50 p-1 rounded-2xl h-10 transform hover:-translate-y-0.5">
+                    <a class=" font-bold text-[16px] flex flex-row space-x-2.5 mt-1 ml-4"><svg class="stroke-current"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <g fill="none" stroke-width="1.5">
+                                <circle cx="12" cy="6" r="4" />
+                                <path stroke-linecap="round"
+                                    d="M19.998 18q.002-.246.002-.5c0-2.485-3.582-4.5-8-4.5s-8 2.015-8 4.5S4 22 12 22c2.231 0 3.84-.157 5-.437" />
+                            </g>
+                        </svg><span>Customer</span></a>
+                </li>
+                <li [routerLinkActive]="['bg-gray-700','shadow-md','shadow-gray-600', 'text-white', 'dark:bg-gray-300/10', 'dark:shadow-gray-900/30','dark:text-cyan-500']"
+                    [routerLinkActiveOptions]="{ exact: true }" routerLink="/transactions"
+                    class="w-48 dark:text-cyan-100 dark:hover:text-cyan-400 cursor-pointer text-gray-700 inset-shadow-sm inset-shadow-gray-400 hover:text-white hover:bg-gray-500 hover:inset-shadow-sm hover:inset-shadow-gray-800 dark:inset-shadow-none dark:hover:inset-shadow-none dark:hover:bg-gray-700/50 p-1 rounded-2xl h-10 transform hover:-translate-y-0.5">
+                    <a class=" font-bold text-[16px] flex flex-row space-x-2.5 mt-1 ml-4">
+                        <svg class="stroke-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none">
+                            <g stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                                <path
+                                    d="M4.58 8.607L2 8.454C3.849 3.704 9.158 1 14.333 2.344c5.513 1.433 8.788 6.918 7.314 12.25c-1.219 4.411-5.304 7.337-9.8 7.406" />
+                                <path
+                                    d="M12 22C6.5 22 2 17 2 11m11.604-1.278c-.352-.37-1.213-1.237-2.575-.62c-1.361.615-1.577 2.596.482 2.807c.93.095 1.537-.11 2.093.47c.556.582.659 2.198-.761 2.634s-2.341-.284-2.588-.509m1.653-6.484v.79m0 6.337v.873" />
+                            </g>
+                        </svg>
+                        <span>Transaction</span>
+                    </a>
+                </li>
+                <li [routerLinkActive]="['bg-gray-700','shadow-md','shadow-gray-600', 'text-white', 'dark:bg-gray-300/10', 'dark:shadow-gray-900/30','dark:text-cyan-500']"
+                    [routerLinkActiveOptions]="{ exact: true }" routerLink="/location"
+                    class="w-48 dark:text-cyan-100 dark:hover:text-cyan-400 cursor-pointer text-gray-700 inset-shadow-sm inset-shadow-gray-400 hover:text-white hover:bg-gray-500 hover:inset-shadow-sm hover:inset-shadow-gray-800 dark:inset-shadow-none dark:hover:inset-shadow-none dark:hover:bg-gray-700/50 p-1 rounded-2xl h-10 transform hover:-translate-y-0.5">
+                    <a class=" font-bold text-[16px] flex flex-row space-x-2.5 mt-1 ml-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="stroke-current">
+                            <g fill="none"  stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2">
+                                <circle cx="12" cy="10" r="3" />
+                                <path
+                                    d="M12 2a8 8 0 0 0-8 8c0 1.892.402 3.13 1.5 4.5L12 22l6.5-7.5c1.098-1.37 1.5-2.608 1.5-4.5a8 8 0 0 0-8-8" />
+                            </g>
+                        </svg>
+                        <span>Location</span>
+                    </a>
+                </li>
+
+
+
+                <li
+                    class="w-48 dark:text-cyan-100 dark:hover:text-cyan-400 cursor-pointer text-gray-700 inset-shadow-sm inset-shadow-gray-400 hover:text-white hover:bg-indigo-500 hover:inset-shadow-sm hover:inset-shadow-indigo-800 dark:inset-shadow-none dark:hover:inset-shadow-none dark:hover:bg-gray-700/50 p-1 rounded-2xl h-10 transform hover:-translate-y-0.5">
+                    <a (click)="logout()" class="font-bold text-[16px] flex flex-row space-x-2.5 mt-1 ml-4 "><svg
+                            class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h6q.425 0 .713.288T12 4t-.288.713T11 5H5v14h6q.425 0 .713.288T12 20t-.288.713T11 21zm12.175-8H10q-.425 0-.712-.288T9 12t.288-.712T10 11h7.175L15.3 9.125q-.275-.275-.275-.675t.275-.7t.7-.313t.725.288L20.3 11.3q.3.3.3.7t-.3.7l-3.575 3.575q-.3.3-.712.288t-.713-.313q-.275-.3-.262-.712t.287-.688z" />
+                        </svg><span>Logout</span></a>
+                </li>
+                <li>
+                    <div
+                        class="w-full h-[64px] mt-100 bg-indigo-500 dark:bg-gray-700 hidden rounded-2xl  md:flex md:flex-row space-x-3 items-center justify-center">
+                        <span class="text-white text-lg font-semibold">Ung Kakada</span>
+                        <div class="w-[48px] h-[48px] bg-white rounded-full"></div>
+                    </div>
+                </li>
+            </ul>
+
+        </nav>
+
+    </aside>
+    <!--mobile-->
+    <div [ngClass]="menu_visable ? 'animate-slide-in':'animate-slide-out'" class="z-1  transform -translate-y-5">
+        <div class="relative ">
+            <div class="absolute h-lvh -top-12 ">
+
+                <aside
+                    class="w-64 h-screen flex-col justify-start text-center bg-gray-200 dark:bg-gray-800 dark:text-white    lg:hidden animate-slide-in transition-all duration-300">
+                    <div class="w-[24px] h-[24px]  absolute top-5 dark:text-white text-gray-800"
+                        (click)="menuVisable()">
+                        <svg class="ml-1 fill-current" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            viewBox="0 0 14 14">
+                            <path fill-rule="evenodd"
+                                d="M1.707.293A1 1 0 0 0 .293 1.707L5.586 7L.293 12.293a1 1 0 1 0 1.414 1.414L7 8.414l5.293 5.293a1 1 0 0 0 1.414-1.414L8.414 7l5.293-5.293A1 1 0 0 0 12.293.293L7 5.586z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+
+                    <h1 class="text-2xl text-gray-700 dark:text-white font-bold p-4 mt-5">Admin Panel</h1>
+                    <div class="font-semibold text-gray-700 dark:text-white text-[16px] ">Main Menu</div>
+                    <nav class="p-4 mt-0 ">
+                        <ul class="flex flex-col justify-start items-center space-y-2">
+                            <li (click)="menuVisable()"
+                                [routerLinkActive]="['bg-indigo-500','shadow-md','shadow-indigo-400', 'text-white', 'dark:bg-gray-300/10', 'dark:shadow-gray-800/20','dark:text-cyan-600']"
+                                [routerLinkActiveOptions]="{ exact: true }" routerLink="/dashboard"
+                                class="w-48 cursor-pointer dark:text-cyan-50 text-gray-700 inset-shadow-sm inset-shadow-gray-400 hover:text-cyan-300 hover:bg-indigo-500 hover:inset-shadow-sm hover:inset-shadow-indigo-800 dark:inset-shadow-none dark:hover:inset-shadow-none dark:hover:bg-gray-700/50 p-1 rounded-2xl h-10 transform hover:-translate-y-0.5">
+                                <a class="   font-bold text-[16px] flex flex-row space-x-2.5 mt-1 ml-4"><svg svg
+                                        class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            d="M13 8V4q0-.425.288-.712T14 3h6q.425 0 .713.288T21 4v4q0 .425-.288.713T20 9h-6q-.425 0-.712-.288T13 8M3 12V4q0-.425.288-.712T4 3h6q.425 0 .713.288T11 4v8q0 .425-.288.713T10 13H4q-.425 0-.712-.288T3 12m10 8v-8q0-.425.288-.712T14 11h6q.425 0 .713.288T21 12v8q0 .425-.288.713T20 21h-6q-.425 0-.712-.288T13 20M3 20v-4q0-.425.288-.712T4 15h6q.425 0 .713.288T11 16v4q0 .425-.288.713T10 21H4q-.425 0-.712-.288T3 20m2-9h4V5H5zm10 8h4v-6h-4zm0-12h4V5h-4zM5 19h4v-2H5zm4-2" />
+                                    </svg><span>Dashboard</span></a>
+                            </li>
+                            <!-- <li (click)="menuVisable()"
+                                [routerLinkActive]="['bg-indigo-500','shadow-md','shadow-indigo-400', 'text-white', 'dark:bg-gray-300/10', 'dark:shadow-gray-800/20','dark:text-cyan-600']"
+                                [routerLinkActiveOptions]="{ exact: true }" routerLink="/analyst"
+                                class="w-48 cursor-pointer dark:text-cyan-50 text-gray-700 inset-shadow-sm inset-shadow-gray-400 hover:text-cyan-300 hover:bg-indigo-500 hover:inset-shadow-sm hover:inset-shadow-indigo-800 dark:inset-shadow-none dark:hover:inset-shadow-none dark:hover:bg-gray-700/50 p-1 rounded-2xl h-10 transform hover:-translate-y-0.5">
+                                <a class="    font-bold text-[16px] flex flex-row space-x-2.5 mt-1 ml-4"><svg
+                                        class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            d="M8 12q-.425 0-.712.288T7 13v3q0 .425.288.713T8 17t.713-.288T9 16v-3q0-.425-.288-.712T8 12m8-5q-.425 0-.712.288T15 8v8q0 .425.288.713T16 17t.713-.288T17 16V8q0-.425-.288-.712T16 7m-4 7q-.425 0-.712.288T11 15v1q0 .425.288.713T12 17t.713-.288T13 16v-1q0-.425-.288-.712T12 14m-7 7q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm0-2h14V5H5zM5 5v14zm7 7q.425 0 .713-.288T13 11t-.288-.712T12 10t-.712.288T11 11t.288.713T12 12" />
+                                    </svg><span>Analyst</span></a>
+                            </li> -->
+                            <li (click)="menuVisable()"
+                                [routerLinkActive]="['bg-indigo-500','shadow-md','shadow-indigo-400', 'text-white', 'dark:bg-gray-300/10', 'dark:shadow-gray-800/20','dark:text-cyan-600']"
+                                [routerLinkActiveOptions]="{ exact: true }" routerLink="/inventory"
+                                class="w-48 cursor-pointer dark:text-cyan-50 text-gray-700 inset-shadow-sm inset-shadow-gray-400 hover:text-cyan-300 hover:bg-indigo-500 hover:inset-shadow-sm hover:inset-shadow-indigo-800 dark:inset-shadow-none dark:hover:inset-shadow-none dark:hover:bg-gray-700/50 p-1 rounded-2xl h-10 transform hover:-translate-y-0.5">
+                                <a class=" font-bold text-[16px] flex flex-row space-x-2.5 mt-1 ml-4"><svg
+                                        class="fill-current" class="fill-current" xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" viewBox="0 0 24 24">
+                                        <path
+                                            d="M5 5h2v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V5h2v5h2V5c0-1.1-.9-2-2-2h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h6v-2H5zm7-2c.55 0 1 .45 1 1s-.45 1-1 1s-1-.45-1-1s.45-1 1-1" />
+                                        <path
+                                            d="M21.75 12.25c-.41-.41-1.09-.41-1.5 0L15.51 17l-2.26-2.25c-.41-.41-1.08-.41-1.5 0c-.41.41-.41 1.09 0 1.5l3.05 3.04c.39.39 1.02.39 1.41 0l5.53-5.54c.42-.41.42-1.09.01-1.5" />
+                                    </svg><span>Inventory</span></a>
+                            </li>
+                            <li (click)="menuVisable()"
+                                [routerLinkActive]="['bg-indigo-500','shadow-md','shadow-indigo-400', 'text-white', 'dark:bg-gray-300/10', 'dark:shadow-gray-800/20','dark:text-cyan-600']"
+                                [routerLinkActiveOptions]="{ exact: true }" routerLink="/customer"
+                                class="w-48 cursor-pointer dark:text-cyan-50 text-gray-700 inset-shadow-sm inset-shadow-gray-400 hover:text-cyan-300 hover:bg-indigo-500 hover:inset-shadow-sm hover:inset-shadow-indigo-800 dark:inset-shadow-none dark:hover:inset-shadow-none dark:hover:bg-gray-700/50 p-1 rounded-2xl h-10 transform hover:-translate-y-0.5">
+                                <a class=" font-bold text-[16px] flex flex-row space-x-2.5 mt-1 ml-4"><svg
+                                        class="stroke-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24">
+                                        <g fill="none" stroke-width="1.5">
+                                            <circle cx="12" cy="6" r="4" />
+                                            <path stroke-linecap="round"
+                                                d="M19.998 18q.002-.246.002-.5c0-2.485-3.582-4.5-8-4.5s-8 2.015-8 4.5S4 22 12 22c2.231 0 3.84-.157 5-.437" />
+                                        </g>
+                                    </svg><span>Customer</span></a>
+                            </li>
+                            <li (click)="menuVisable()"
+                                [routerLinkActive]="['bg-indigo-500','shadow-md','shadow-indigo-400', 'text-white', 'dark:bg-gray-300/10', 'dark:shadow-gray-800/20','dark:text-cyan-600']"
+                                [routerLinkActiveOptions]="{ exact: true }" routerLink="/transactions"
+                                class="w-48 cursor-pointer dark:text-cyan-50 text-gray-700 inset-shadow-sm inset-shadow-gray-400 hover:text-cyan-300 hover:bg-indigo-500 hover:inset-shadow-sm hover:inset-shadow-indigo-800 dark:inset-shadow-none dark:hover:inset-shadow-none dark:hover:bg-gray-700/50 p-1 rounded-2xl h-10 transform hover:-translate-y-0.5">
+                                <a class=" font-bold text-[16px] flex flex-row space-x-2.5 mt-1 ml-4">
+                                    <svg class="stroke-current" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" viewBox="0 0 24 24" fill="none">
+                                        <g stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                                            <path
+                                                d="M4.58 8.607L2 8.454C3.849 3.704 9.158 1 14.333 2.344c5.513 1.433 8.788 6.918 7.314 12.25c-1.219 4.411-5.304 7.337-9.8 7.406" />
+                                            <path
+                                                d="M12 22C6.5 22 2 17 2 11m11.604-1.278c-.352-.37-1.213-1.237-2.575-.62c-1.361.615-1.577 2.596.482 2.807c.93.095 1.537-.11 2.093.47c.556.582.659 2.198-.761 2.634s-2.341-.284-2.588-.509m1.653-6.484v.79m0 6.337v.873" />
+                                        </g>
+                                    </svg>
+                                    <span>Transaction</span>
+                                </a>
+                            </li>
+                            <!-- <li (click)="menuVisable()"
+                                [routerLinkActive]="['bg-indigo-500','shadow-md','shadow-indigo-400', 'text-white', 'dark:bg-gray-300/10', 'dark:shadow-gray-800/20','dark:text-cyan-600']"
+                                [routerLinkActiveOptions]="{ exact: true }" routerLink="/orders"
+                                class="w-48 cursor-pointer dark:text-cyan-50 text-gray-700 inset-shadow-sm inset-shadow-gray-400 hover:text-cyan-300 hover:bg-indigo-500 hover:inset-shadow-sm hover:inset-shadow-indigo-800 dark:inset-shadow-none dark:hover:inset-shadow-none dark:hover:bg-gray-700/50 p-1 rounded-2xl h-10 transform hover:-translate-y-0.5">
+                                <a class=" font-bold text-[16px] flex flex-row space-x-2.5 mt-1 ml-4"><svg
+                                        class="stroke-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24">
+                                        <g fill="none" stroke-width="2">
+                                            <rect width="14" height="17" x="5" y="4" rx="2" />
+                                            <path stroke-linecap="round" d="M9 9h6m-6 4h6m-6 4h4" />
+                                        </g>
+                                    </svg><span>Orders</span></a>
+                            </li> -->
+                            <li (click)="menuVisable()"
+                                [routerLinkActive]="['bg-indigo-500','shadow-md','shadow-indigo-400', 'text-white', 'dark:bg-gray-300/10', 'dark:shadow-gray-800/20','dark:text-cyan-600']"
+                                [routerLinkActiveOptions]="{ exact: true }" routerLink="/location"
+                                class="w-48 cursor-pointer dark:text-cyan-50 text-gray-700 inset-shadow-sm inset-shadow-gray-400 hover:text-cyan-300 hover:bg-indigo-500 hover:inset-shadow-sm hover:inset-shadow-indigo-800 dark:inset-shadow-none dark:hover:inset-shadow-none dark:hover:bg-gray-700/50 p-1 rounded-2xl h-10 transform hover:-translate-y-0.5">
+                                <a class=" font-bold text-[16px] flex flex-row space-x-2.5 mt-1 ml-4"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="stroke-current">
+                                        <g fill="none"  stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2">
+                                            <circle cx="12" cy="10" r="3" />
+                                            <path
+                                                d="M12 2a8 8 0 0 0-8 8c0 1.892.402 3.13 1.5 4.5L12 22l6.5-7.5c1.098-1.37 1.5-2.608 1.5-4.5a8 8 0 0 0-8-8" />
+                                        </g>
+                                    </svg><span>location</span></a>
+                            </li>
+                            <!--li class="ml-11 mt-60">
+                                <button (click)="toggleMode()"
+                                    class="w-16 ml-5  dark:bg-gray-500 inset-shadow-sm inset-shadow-gray-900/50  p-1 justify-items-center rounded-2xl h-7  transform hover:scale-105">
+                                    @if(!isDarkMode) {
+                                    <div class="-mt-0.5 ">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24">
+                                            <g fill="none" stroke="#fff" stroke-width="1">
+                                                <path
+                                                    d="M20.434 13.934a6.5 6.5 0 0 1-7.367-7.367A6.501 6.501 0 0 0 14 19.5a6.5 6.5 0 0 0 6.433-5.566Z" />
+                                                <path stroke-linecap="round"
+                                                    d="M4.5 8.75v1.5m.75-.75h-1.5m3.75-6v2m1-1h-2" />
+                                            </g>
+                                        </svg>
+                                    </div>}@else {
+                                    <div class="-mt-0.5 text-indigo-500">
+                                        <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24">
+                                            <g>
+                                                <path
+                                                    d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
+                                                <path
+                                                    d="M12 19a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1m6.364-2.05l.707.707a1 1 0 0 1-1.414 1.414l-.707-.707a1 1 0 0 1 1.414-1.414m-12.728 0a1 1 0 0 1 1.497 1.32l-.083.094l-.707.707a1 1 0 0 1-1.497-1.32l.083-.094zM12 6a6 6 0 1 1 0 12a6 6 0 0 1 0-12m0 2a4 4 0 1 0 0 8a4 4 0 0 0 0-8m-8 3a1 1 0 0 1 .117 1.993L4 13H3a1 1 0 0 1-.117-1.993L3 11zm17 0a1 1 0 1 1 0 2h-1a1 1 0 1 1 0-2zM4.929 4.929a1 1 0 0 1 1.32-.083l.094.083l.707.707a1 1 0 0 1-1.32 1.497l-.094-.083l-.707-.707a1 1 0 0 1 0-1.414m14.142 0a1 1 0 0 1 0 1.414l-.707.707a1 1 0 1 1-1.414-1.414l.707-.707a1 1 0 0 1 1.414 0M12 2a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1" />
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    }
+
+                                </button>
+                            </li-->
+                            <li
+                                class=" w-48 pl-5 mt-2 text-gray-600 hover:text-red-500 cursor-pointer   rounded-2xl h-10  transform hover:scale-105">
+                                <a (click)="logout()" class=" font-bold text-[16px] flex flex-row  "><svg
+                                        class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h6q.425 0 .713.288T12 4t-.288.713T11 5H5v14h6q.425 0 .713.288T12 20t-.288.713T11 21zm12.175-8H10q-.425 0-.712-.288T9 12t.288-.712T10 11h7.175L15.3 9.125q-.275-.275-.275-.675t.275-.7t.7-.313t.725.288L20.3 11.3q.3.3.3.7t-.3.7l-3.575 3.575q-.3.3-.712.288t-.713-.313q-.275-.3-.262-.712t.287-.688z" />
+                                    </svg><span>Logout</span></a>
+                            </li>
+                            <li>
+                                <div
+                                    class="w-full h-[48px] dark:bg-cyan-500  rounded-2xl  flex flex-row space-x-3 items-center justify-center transform hover:scale-105 cursor-pointer mt-80">
+                                    <span class="text-hite text-[16px] font-semibold">Ung Kakada</span>
+                                    <div class="w-[38px] h-[38px] bg-white rounded-full"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </aside>
+            </div>
+        </div>
+    </div>
+    <main class="w-full overflow-scroll overflow-x-hidden overflow-y-auto scroll-smooth animate-zoom-in
+         [&::-webkit-scrollbar]:w-2 
+           
+           [&::-webkit-scrollbar-track]:bg-transparent
+           [&::-webkit-scrollbar-thumb]:bg-gray-800
+           [&::-webkit-scrollbar-thumb]:rounded-full bg-gray-300">
+        <div class=" absolute right-2 top-5">
+            <button (click)="toggleMode()"
+                class="w-16 ml-5  dark:bg-gray-500 inset-shadow-sm inset-shadow-gray-900/50  p-1 justify-items-center rounded-2xl h-7  transform hover:scale-105">
+                @if(!isDarkMode) {
+                <div class="-mt-0.5 ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <g fill="none" stroke="#000000" stroke-width="1">
+                            <path
+                                d="M20.434 13.934a6.5 6.5 0 0 1-7.367-7.367A6.501 6.501 0 0 0 14 19.5a6.5 6.5 0 0 0 6.433-5.566Z" />
+                            <path stroke-linecap="round" d="M4.5 8.75v1.5m.75-.75h-1.5m3.75-6v2m1-1h-2" />
+                        </g>
+                    </svg>
+                </div>}@else {
+                <div class="-mt-0.5 text-gray-200">
+                    <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24">
+                        <g>
+                            <path
+                                d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
+                            <path
+                                d="M12 19a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1m6.364-2.05l.707.707a1 1 0 0 1-1.414 1.414l-.707-.707a1 1 0 0 1 1.414-1.414m-12.728 0a1 1 0 0 1 1.497 1.32l-.083.094l-.707.707a1 1 0 0 1-1.497-1.32l.083-.094zM12 6a6 6 0 1 1 0 12a6 6 0 0 1 0-12m0 2a4 4 0 1 0 0 8a4 4 0 0 0 0-8m-8 3a1 1 0 0 1 .117 1.993L4 13H3a1 1 0 0 1-.117-1.993L3 11zm17 0a1 1 0 1 1 0 2h-1a1 1 0 1 1 0-2zM4.929 4.929a1 1 0 0 1 1.32-.083l.094.083l.707.707a1 1 0 0 1-1.32 1.497l-.094-.083l-.707-.707a1 1 0 0 1 0-1.414m14.142 0a1 1 0 0 1 0 1.414l-.707.707a1 1 0 1 1-1.414-1.414l.707-.707a1 1 0 0 1 1.414 0M12 2a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1" />
+                        </g>
+                    </svg>
+                </div>
+                }
+
+            </button>
+        </div>
+        <router-outlet></router-outlet>
+    </main>
+</div>

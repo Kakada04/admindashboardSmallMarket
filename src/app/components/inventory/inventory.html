@@ -1,0 +1,492 @@
+<div
+  class="w-full h-full max-sm:h-auto p-4 flex flex-col justify-items-center max-sm:space-y-5 md:space-y-10 bg-gray-200 dark:bg-gray-800">
+<div
+  class="w-full text-sm md:text-lg font-semibold flex flex-col md:flex-row items-center justify-center gap-4 md:gap-x-6 lg:gap-x-20 mt-8 p-2">
+  <div class="w-full h-[64px]">
+      <span class="text-4xl font-semibold text-gray-700 dark:text-gray-200">Inventory
+        <br>
+        <span class="text-gray-600 dark:text-gray-200 text-sm font-semibold">Let check your Stock</span>
+      </span>
+    </div>
+  <div
+    class="w-full max-w-[380px] md:max-w-[400px] h-32 bg-white shadow-md dark:bg-gray-600 rounded-lg p-4 flex flex-col space-y-2">
+    <div class="flex flex-col space-y-2 dark:text-white h-full">
+      <div class="flex items-center whitespace-nowrap text-sm md:text-lg space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48" class="stroke-current">
+          <g fill="none" stroke-linejoin="round" stroke-width="4">
+            <path d="M44 14L24 4L4 14v20l20 10l20-10z" />
+            <path stroke-linecap="round" d="m4 14l20 10m0 20V24m20-10L24 24M34 9L14 19" />
+          </g>
+        </svg>
+        <span class="text-gray-900 dark:text-white">Total Products</span>
+      </div>
+      @if(totalproducts.status == true) {
+      <span class="text-2xl font-bold text-gray-900 dark:text-white">{{totalproducts.data}}</span>
+      }@else {
+      <span class="text-2xl font-bold text-gray-900 dark:text-white">loading...</span>
+      }
+      <span class="text-sm font-medium text-indigo-700 dark:text-indigo-100">All Product in Stock</span>
+    </div>
+  </div>
+  <div
+    class="w-full max-w-[380px] md:max-w-[400px] h-32 bg-white shadow-md dark:bg-gray-600 rounded-lg p-4 flex flex-col space-y-2">
+    <div class="flex flex-col space-y-2 whitespace-nowrap text-sm md:text-lg font-semibold dark:text-white h-full">
+      <div class="flex items-center space-x-2">
+        <svg class="stroke-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <g fill="none">
+            <path stroke-linecap="round" stroke-width="1.5"
+              d="M3.03 13.078a2.5 2.5 0 0 1 0-2.157c.14-.294.38-.576.86-1.14c.192-.225.288-.337.368-.457a2.5 2.5 0 0 0 .376-.907c.028-.142.04-.289.063-.583c.059-.738.088-1.107.197-1.416A2.5 2.5 0 0 1 6.42 4.894c.308-.109.677-.139 1.416-.197c.294-.024.44-.036.582-.064a2.5 2.5 0 0 0 .908-.376c.12-.08.232-.175.456-.367c.564-.48.846-.72 1.14-.861a2.5 2.5 0 0 1 2.157 0c.295.14.577.38 1.14.861c.225.192.337.287.457.367a2.5 2.5 0 0 0 .908.376c.141.028.288.04.582.064c.739.058 1.108.088 1.416.197a2.5 2.5 0 0 1 1.525 1.524M4.894 17.581a2.5 2.5 0 0 0 1.525 1.524c.308.11.677.139 1.416.197c.294.024.44.036.582.064a2.5 2.5 0 0 1 .908.376c.12.08.232.175.456.367c.564.48.846.72 1.14.861a2.5 2.5 0 0 0 2.157 0c.295-.14.577-.38 1.14-.861a5 5 0 0 1 .457-.367a2.5 2.5 0 0 1 .908-.376c.141-.028.288-.04.582-.064c.739-.058 1.108-.088 1.416-.197a2.5 2.5 0 0 0 1.525-1.524c.109-.308.138-.678.197-1.416c.023-.294.035-.441.063-.583c.064-.324.192-.633.376-.907c.08-.12.176-.232.367-.457c.48-.564.721-.846.862-1.14a2.5 2.5 0 0 0 0-2.157M9 15l6-6" />
+            <path fill="#fff" d="M15.5 14.5a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5-5a1 1 0 1 1-2 0a1 1 0 0 1 2 0" />
+          </g>
+        </svg>
+        <span class="text-gray-900 dark:text-white">Total Sale</span>
+      </div>
+      @if(totalproductsSaled.status == true) {
+      <span class="text-2xl font-bold text-gray-900 dark:text-white">{{totalproductsSaled.data}}</span>
+      }@else {
+      <span class="text-2xl font-bold text-gray-900 dark:text-white">loading...</span>
+      }
+      <span class="text-sm font-medium text-indigo-700 dark:text-indigo-100">Products Saled</span>
+    </div>
+  </div>
+  <!-- <div
+    class="w-full max-w-[380px] md:max-w-[400px] h-32 bg-white shadow-md dark:bg-gray-600 rounded-lg p-4 flex flex-col space-y-2">
+    <div class="flex flex-col space-y-2 whitespace-nowrap text-sm md:text-lg font-semibold dark:text-white h-full">
+      <div class="flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" class="fill-current">
+          <path
+            d="M12.32 8a3 3 0 0 0-2-.7H5.63A1.59 1.59 0 0 1 4 5.69a2 2 0 0 1 0-.25a1.59 1.59 0 0 1 1.63-1.33h4.62a1.59 1.59 0 0 1 1.57 1.33h1.5a3.08 3.08 0 0 0-3.07-2.83H8.67V.31H7.42v2.3H5.63a3.08 3.08 0 0 0-3.07 2.83a2 2 0 0 0 0 .25a3.07 3.07 0 0 0 3.07 3.07h4.74A1.59 1.59 0 0 1 12 10.35a2 2 0 0 1 0 .34a1.59 1.59 0 0 1-1.55 1.24h-4.7a1.59 1.59 0 0 1-1.55-1.24H2.69a3.08 3.08 0 0 0 3.06 2.73h1.67v2.27h1.25v-2.27h1.7a3.08 3.08 0 0 0 3.06-2.73v-.34A3.06 3.06 0 0 0 12.32 8" />
+        </svg>
+        <span class="text-gray-900 dark:text-white">Total Revenue</span>
+      </div>
+      @if(totalRevenue.status == true) {
+      <span class="text-2xl font-bold text-green-500 dark:text-green-500">{{totalRevenue.data}}</span>
+      <span class="text-sm font-medium text-indigo-700 dark:text-indigo-100">{{totalRevenue.period}}</span>
+      }@else {
+      <span class="text-2xl font-bold text-gray-900 dark:text-white">loading...</span>
+      }
+    </div>
+  </div> -->
+  <div
+    class="w-full max-w-[380px] md:max-w-[400px] h-32 bg-white shadow-md dark:bg-gray-600 rounded-lg p-4 flex flex-col space-y-2">
+    <div class="flex flex-col space-y-2 whitespace-nowrap text-sm md:text-lg font-semibold dark:text-white h-full">
+      <div class="flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48" class="stroke-current">
+          <g fill="none" stroke-linejoin="round" stroke-width="4">
+            <path d="M33.05 7H38a2 2 0 0 1 2 2v33a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h7v3h14V7z" />
+            <path stroke-linecap="round" d="M17 4h14v6H17zm10 15l-8 8.001h10.004l-8.004 8" />
+          </g>
+        </svg>
+        <span class="text-lg font-semibold text-gray-900 dark:text-white">Total Orders</span>
+      </div>
+      @if(totalOrder.status == true) {
+      <span class="text-2xl font-bold text-gray-900 dark:text-white">{{totalOrder.data}}</span>
+      }@else {
+      <span class="text-2xl font-bold text-gray-900 dark:text-white">loading...</span>
+      }
+      <span class="text-sm font-medium text-indigo-700 dark:text-indigo-100">Today</span>
+    </div>
+  </div>
+</div>
+<div class="flex flex-col md:flex-row w-full gap-3 md:gap-x-2 transition-all duration-600 ease-in-out">
+  <div class="w-full flex flex-col sm:flex-row items-center whitespace-nowrap gap-2">
+    @if(!categoryList) {
+    <div *ngIf="!loading" class="w-full sm:w-auto flex justify-center items-center">
+      <select id="category_type" name="category_type" [(ngModel)]="selectedCategoryType"
+        (change)="sortCateType($event)"
+        class="bg-gray-700 text-indigo-100 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 w-full sm:w-auto p-2 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+        <option value="" selected>All Categories</option>
+        <option *ngFor="let category of categorys" [value]="category.type" [attr.data-id]="category.id">
+          {{ category.type }}
+        </option>
+      </select>
+    </div>
+    }
+    <div class="relative w-full animate-slide-in">
+      <input [(ngModel)]="searchTerm" (ngModelChange)="filterProducts()"
+        [placeholder]="!categoryList ? 'Search products by name...' : 'Search categories...'" type="search"
+        id="search-dropdown"
+        class="block rounded-lg p-2.5 w-full text-sm text-gray-900 bg-gray-50 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" />
+      <button type="submit"
+        class="absolute top-0 right-0 p-2.5 text-sm font-medium h-full text-white bg-gray-700 rounded-r-lg border border-gray-600 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-blue-800">
+        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+        </svg>
+        <span class="sr-only">Search</span>
+      </button>
+    </div>
+  </div>
+  <div class="w-full sm:w-auto flex flex-col sm:flex-row gap-2 justify-end items-center">
+    @if(!categoryList) {
+    <div class="w-full sm:w-auto flex whitespace-nowrap animate-slide-in">
+      <button type="submit" (click)="modalVisable()"
+        class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2 text-center dark:bg-cyan-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-full sm:w-auto">
+        <svg class="mr-1 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+            clip-rule="evenodd"></path>
+        </svg>
+        <span>Add New Product</span>
+      </button>
+    </div>
+    } @else {
+    <div class="w-full sm:w-auto animate-slide-in">
+      <button type="submit" (click)="categoryModal = true"
+        class="text-white whitespace-nowrap flex justify-center items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2 text-center dark:bg-cyan-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-full sm:w-auto">
+        <svg class="mr-1 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+            clip-rule="evenodd"></path>
+        </svg>
+        <span>Add New Category</span>
+      </button>
+    </div>
+    }
+  </div>
+</div>
+ <div class="w-full h-12  text-center mt-4  flex flex-row space-x-10 items-center rounded-t-2xl">
+
+    <div class=" h-12 text-center max-sm:mt-1 p-2 z-30" (click)="categoryList = false">
+      <label class="text-lg font-semibold  max-sm:text-[16px] text-white dark:text-white">ProductList</label>
+    </div>
+    <div class="h-12 text-center p-2 z-30" (click)="categoryList = true">
+      <label class="text-lg max-sm:text-[16px] font-semibold text-white dark:text-white">Categories</label>
+
+    </div>
+    <div
+      [ngClass]="!categoryList ? ['-translate-x-75','rounded-l-xl','max-sm:-translate-x-3']:['-translate-x-40','rounded-r-xl ','max-sm:translate-x-27']"
+      class="bg-gray-600 shadow-md max-sm:absolute  w-30 h-10 z-20 transform transition-all duration-300 ease-in-out ">
+    </div>
+    <div
+      [ngClass]="!categoryList ? ['sm:-translate-x-85','rounded-r-xl ','translate-x-25']:['-translate-x-115','xl:-translate-x-115','rounded-l-xl','inset-shadow-gray-900/80','max-sm:-translate-x-2']"
+      class="bg-gray-900/90 inset-shadow-sm max-sm:absolute  w-36 h-10 z-10 transform transition-all duration-300 ease-in-out ">
+    </div>
+
+  </div>
+
+  @if(!categoryList){
+  <div class="w-full h-250 dark:bg-gray-700 rounded-t-2xl overflow-auto animation-slide-from-top">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <table class="w-full text-sm text-left rtl:text-right text-gray-900 dark:text-gray-400">
+        <thead class="text-xs text-gray-200 uppercase bg-gray-600 shadow-md   dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th scope="col" class="px-6 py-3 ">Product name</th>
+            <th scope="col" class="px-6 py-3">Category</th>
+            <th scope="col" class="px-6 py-3">Quantity</th>
+            <th scope="col" class="px-6 py-3">Cost Price</th>
+            <th scope="col" class="px-6 py-3">Sell Price</th>
+            <th scope="col" class="px-6 py-3">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngIf="!loading; else loadingTemplate">
+            <tr *ngFor="let item of filteredProducts"
+              class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white flex flex-row w-full">
+                <div class="w-48 h-auto">
+                  <span>{{ item.product_name }}</span>
+                </div>
+                <img [src]="imageUrl + item.banner_img" class="w-24 h-auto ml-10" alt="Product Image" />
+              </th>
+              <td class="px-6 py-4">{{ item.category?.type || 'N/A' }}</td>
+              <td class="px-6 py-4">{{ item.quantity }}</td>
+              <td class="px-6 py-4">{{ item.cost_price | currency }}</td>
+              <td class="px-6 py-4">{{ item.sell_price | currency }}</td>
+              <td class="px-6 py-4 flex flex-row space-x-3 p-1">
+                <a (click)="openUpdateModal(item)" class="text-blue-600 hover:underline cursor-pointer">Edit</a>
+                <a (click)="initiateDelete(item.id)" class="text-red-600 hover:underline cursor-pointer">Delete</a>
+                <button (click)="openModal(item)" class="text-green-600 hover:underline">View detail</button>
+              </td>
+            </tr>
+            <tr *ngIf="filteredProducts.length === 0">
+              <td colspan="6" class="px-6 py-4 text-center">No products found.</td>
+            </tr>
+          </ng-container>
+          <ng-template #loadingTemplate>
+            <tr>
+              <td role="status" class="px-14 py-4">
+                <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                  viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                    fill="currentColor" />
+                  <path
+                    d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                    fill="currentFill" />
+                </svg>
+                <span class="sr-only">Loading...</span>
+              </td>
+              <!-- Repeat loading spinners for other columns as in your original HTML -->
+              <td role="status" class="px-10 py-4">
+                <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                  viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- SVG paths as in your original HTML -->
+                </svg>
+                <span class="sr-only">Loading...</span>
+              </td>
+              <td role="status" class="px-10 py-4">
+                <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                  viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- SVG paths -->
+                </svg>
+                <span class="sr-only">Loading...</span>
+              </td>
+              <td role="status" class="px-10 py-4">
+                <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                  viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- SVG paths -->
+                </svg>
+                <span class="sr-only">Loading...</span>
+              </td>
+              <td role="status" class="px-10 py-4">
+                <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                  viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- SVG paths -->
+                </svg>
+                <span class="sr-only">Loading...</span>
+              </td>
+              <td role="status" class="px-10 py-4">
+                <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                  viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- SVG paths -->
+                </svg>
+                <span class="sr-only">Loading...</span>
+              </td>
+            </tr>
+          </ng-template>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  }@else {
+
+
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg animate-slide-from-bottom">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-3">Category Name</th>
+          <th scope="col" class="px-6 py-3">Category Image</th>
+          <th scope="col" class="px-6 py-3">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="!loading; else loadingTemplate">
+          <tr *ngFor="let category of categorys"
+            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              {{ category.type }}
+            </th>
+            <td><img [src]="category.full_banner_url" class="h-[50px] object-contain"></td>
+            <td class="px-6 py-4 flex flex-row space-x-3">
+              <a (click)="openUpdateCategoryModal(category)"
+                class="text-blue-600 hover:underline cursor-pointer">Edit</a>
+              <a (click)="initiateDeleteCategory(category.id)"
+                class="text-red-600 hover:underline cursor-pointer">Delete</a>
+            </td>
+          </tr>
+          <tr *ngIf="categorys.length === 0">
+            <td colspan="2" class="px-6 py-4 text-center">No categories found.</td>
+          </tr>
+        </ng-container>
+        <ng-template #loadingTemplate>
+          <tr>
+            <td role="status" class="px-6 py-4">
+              <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                  fill="currentColor" />
+                <path
+                  d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                  fill="currentFill" />
+              </svg>
+              <span class="sr-only">Loading...</span>
+            </td>
+            <td role="status" class="px-6 py-4">
+              <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Same SVG paths as above -->
+              </svg>
+              <span class="sr-only">Loading...</span>
+            </td>
+          </tr>
+        </ng-template>
+      </tbody>
+    </table>
+  </div>
+
+  }
+
+  <!-- Main modal (unchanged) -->
+  <div [ngClass]="addNewModals ? ['translate-x-[35%] ,translate-y-[20%]'] : 'hidden'"
+    class="absolute transform overflow-y-auto overflow-x-hidden justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+      <div class="relative bg-white rounded-lg dark:bg-gray-800 shadow-sm transition-all dark:shadow-indigo-500">
+        <div
+          class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+            {{ isUpdateMode ? 'Update Product' : 'Create New Product' }}
+          </h3>
+          <button (click)="modalVisable()" type="button"
+            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white">
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+        </div>
+        <form (ngSubmit)="onSubmit()" class="p-4 md:p-5">
+          <div class="grid gap-4 mb-4 grid-cols-2">
+            <div class="col-span-2">
+              <label for="product_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Product Name
+              </label>
+              <input type="text" name="product_name" id="product_name" [(ngModel)]="newProduct.product_name"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                placeholder="Type product name" [required]="!isUpdateMode" />
+            </div>
+            <div class="col-span-2 sm:col-span-1">
+              <label for="cost_price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Cost Price
+              </label>
+              <input type="number" name="cost_price" id="cost_price" [(ngModel)]="newProduct.cost_price"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                placeholder="$2999" [required]="!isUpdateMode" />
+            </div>
+            <div class="col-span-2 sm:col-span-1">
+              <label for="sell_price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Sell Price
+              </label>
+              <input type="number" name="sell_price" id="sell_price" [(ngModel)]="newProduct.sell_price"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                placeholder="$2999" [required]="!isUpdateMode" />
+            </div>
+            <div class="col-span-2 sm:col-span-1">
+              <label for="quantity" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Quantity
+              </label>
+              <input type="number" name="quantity" id="quantity" [(ngModel)]="newProduct.quantity"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                placeholder="10" [required]="!isUpdateMode" />
+            </div>
+            <div *ngIf="!loading" class="col-span-2 sm:col-span-1">
+              <label for="category_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Category
+              </label>
+              <select id="category_type" name="category_type" [(ngModel)]="newProduct.category!.type"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                [required]="!isUpdateMode">
+                <option value="" disabled>Select a category</option>
+                <option *ngFor="let category of categorys" [value]="category.type">
+                  {{ category.type }}
+                </option>
+              </select>
+            </div>
+            <div class="col-span-2">
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="banner_img">
+                Product Image
+              </label>
+              <input type="file" name="banner_img" id="banner_img" (change)="onFileSelected($event)"
+                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                [required]="!isUpdateMode" />
+              <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">
+                SVG, PNG, JPG or GIF (MAX. 800x400px).
+              </p>
+              <div *ngIf="isUpdateMode && newProduct.banner_img" class="mt-2">
+                <img [src]="imageUrl + newProduct.banner_img" alt="Current Product Image"
+                  class="w-32 h-32 object-cover" />
+                <p class="text-sm text-gray-500">Current image</p>
+              </div>
+            </div>
+            <div class="col-span-2">
+              <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Product Description
+              </label>
+              <textarea id="description" name="description" rows="4" [(ngModel)]="newProduct.description"
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Write product description here"></textarea>
+            </div>
+          </div>
+          <button type="submit"
+            class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                clip-rule="evenodd"></path>
+            </svg>
+            {{ isUpdateMode ? 'Update Product' : 'Add New Product' }}
+          </button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--Add Category-->
+  <div [ngClass]="categoryModal ? ['translate-x-[35%] ,translate-y-[20%]'] : 'hidden'"
+    class="absolute transform overflow-y-auto overflow-x-hidden justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+      <div class="relative bg-white rounded-lg dark:bg-gray-800 shadow-sm transition-all dark:shadow-indigo-500">
+        <div
+          class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+            {{ isUpdateCategoryMode ? 'Update Category' : 'Add New Category' }}
+          </h3>
+          <button (click)="categoryModal = false" type="button"
+            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white">
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+        </div>
+        <form (ngSubmit)="onCategorySubmit()" class="p-4 md:p-5" enctype="multipart/form-data">
+          <div class="grid gap-4 mb-4 grid-cols-2">
+            <div class="col-span-2">
+              <label for="category_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Category Name
+              </label>
+              <input type="text" name="category_name" id="category_name" [(ngModel)]="newCategory.type"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                placeholder="Type category name" required />
+              <label for="category_image" class="block mb-2 mt-4 text-sm font-medium text-gray-900 dark:text-white">
+                Category Image
+              </label>
+              <input type="file" name="category_image" id="category_image" (change)="onCategoryFileSelected($event)"
+                accept="image/*"
+                class="bg-gray-50 border cursor-pointer border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                [required]="!isUpdateCategoryMode" />
+              <div *ngIf="isUpdateCategoryMode && newCategory.image" class="mt-2">
+                <img [src]="newCategory.image" class="h-20 w-20 object-cover rounded" alt="Current category image">
+              </div>
+            </div>
+          </div>
+          <button type="submit"
+            class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                clip-rule="evenodd"></path>
+            </svg>
+            {{ isUpdateCategoryMode ? 'Update Category' : 'Add New Category' }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirmation Modal (unchanged) -->
+  <app-delete-confirmation [isOpen]="showConfirmModal" (confirmed)="onConfirmDelete()"
+    (cancelled)="onCancelDelete()"></app-delete-confirmation>
+
+  <!-- Toast Notification (unchanged) -->
+  <div *ngIf="alert_deleted()" class="fixed top-4 right-4 z-50 w-full max-w-xs" data-testid="toast">
+    <!-- Toast content as in your original HTML -->
+  </div>
+</div>
+
+<app-product-details [visible]="showDetails" [product]="productDetail" (close)="handleClose()">
+</app-product-details>

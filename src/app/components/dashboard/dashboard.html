@@ -1,0 +1,204 @@
+<div class="w-full h-auto flex flex-col space-y-5 justify-items-center dark:bg-gray-800 bg-gray-100 p-10">
+  <div class="w-full h-32 flex flex-row max-sm:space-x-0 space-x-[60%] p-4">
+    <div class="w-full h-[64px] flex justify-center items-center">
+      <span class="text-4xl font-semibold text-gray-700 dark:text-gray-200">Dashboard
+        <br>
+        <span class="text-gray-600 dark:text-gray-200 text-sm font-semibold">Welcome to your dashboard</span>
+      </span>
+    </div>
+
+
+  </div>
+
+  <div
+    class="w-full flex max-sm:flex-col md:flex-row items-center justify-center lg:gap-x-[80px] gap-x-[20px] gap-y-10  p-1">
+    <div
+      class="w-[400px] max-sm:w-[380px] h-32 bg-white shadow-md dark:bg-gray-600 rounded-md pt-4 pl-4 flex flex-col  space-y-2">
+      <div class="flex flex-col space-y-2  dark:text-white h-32">
+        <div class="flex items-center space-x-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48" class="stroke-current">
+            <g fill="none" stroke-linejoin="round" stroke-width="4">
+              <path d="M44 14L24 4L4 14v20l20 10l20-10z" />
+              <path stroke-linecap="round" d="m4 14l20 10m0 20V24m20-10L24 24M34 9L14 19" />
+            </g>
+          </svg>
+          <span class="text-lg font-semibold text-gray-900 dark:text-white">Total Products</span>
+        </div>
+
+        @if(totalproducts.status == true) {
+        <span class="text-2xl font-bold text-gray-900 dark:text-white">{{totalproducts.data}}</span>
+        }@else {
+        <span class="text-2xl font-bold text-gray-900 dark:text-white">loading...</span>
+        }
+        <span class="text-sm font-medium text-indigo-700 dark:text-indigo-100">All Product in Stock</span>
+      </div>
+    </div>
+    <div
+      class="w-[400px] max-sm:w-[380px] h-32 bg-white shadow-md dark:bg-gray-600 rounded-md pt-4 pl-4 flex flex-col  space-y-2">
+      <div class="flex flex-col space-y-2  dark:text-white h-32">
+        <div class="flex items-center space-x-2">
+          <svg class="stroke-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g fill="none">
+              <path stroke-linecap="round" stroke-width="1.5"
+                d="M3.03 13.078a2.5 2.5 0 0 1 0-2.157c.14-.294.38-.576.86-1.14c.192-.225.288-.337.368-.457a2.5 2.5 0 0 0 .376-.907c.028-.142.04-.289.063-.583c.059-.738.088-1.107.197-1.416A2.5 2.5 0 0 1 6.42 4.894c.308-.109.677-.139 1.416-.197c.294-.024.44-.036.582-.064a2.5 2.5 0 0 0 .908-.376c.12-.08.232-.175.456-.367c.564-.48.846-.72 1.14-.861a2.5 2.5 0 0 1 2.157 0c.295.14.577.38 1.14.861c.225.192.337.287.457.367a2.5 2.5 0 0 0 .908.376c.141.028.288.04.582.064c.739.058 1.108.088 1.416.197a2.5 2.5 0 0 1 1.525 1.524M4.894 17.581a2.5 2.5 0 0 0 1.525 1.524c.308.11.677.139 1.416.197c.294.024.44.036.582.064a2.5 2.5 0 0 1 .908.376c.12.08.232.175.456.367c.564.48.846.72 1.14.861a2.5 2.5 0 0 0 2.157 0c.295-.14.577-.38 1.14-.861a5 5 0 0 1 .457-.367a2.5 2.5 0 0 1 .908-.376c.141-.028.288-.04.582-.064c.739-.058 1.108-.088 1.416-.197a2.5 2.5 0 0 0 1.525-1.524c.109-.308.138-.678.197-1.416c.023-.294.035-.441.063-.583c.064-.324.192-.633.376-.907c.08-.12.176-.232.367-.457c.48-.564.721-.846.862-1.14a2.5 2.5 0 0 0 0-2.157M9 15l6-6" />
+              <path fill="#fff" d="M15.5 14.5a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5-5a1 1 0 1 1-2 0a1 1 0 0 1 2 0" />
+            </g>
+          </svg>
+          <span class="text-lg font-semibold text-gray-900 dark:text-white">Total Sale</span>
+
+        </div>
+        @if(totalproductsSaled.status == true) {
+        <span class="text-2xl font-bold text-gray-900 dark:text-white">{{totalproductsSaled.data}}</span>
+        }@else {
+        <span class="text-2xl font-bold text-gray-900 dark:text-white">loading...</span>
+        }
+        <span class="text-sm font-medium text-indigo-700 dark:text-indigo-100">Products Saled</span>
+      </div>
+    </div>
+    <div
+      class="w-[400px] max-sm:w-[380px] h-32 bg-white shadow-md dark:bg-gray-600 rounded-md pt-4 pl-4 flex flex-col  space-y-2">
+      <div class="flex flex-col space-y-2  dark:text-white h-32">
+        <div class="flex items-center space-x-2 ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" class="fill-current">
+            <path
+              d="M12.32 8a3 3 0 0 0-2-.7H5.63A1.59 1.59 0 0 1 4 5.69a2 2 0 0 1 0-.25a1.59 1.59 0 0 1 1.63-1.33h4.62a1.59 1.59 0 0 1 1.57 1.33h1.5a3.08 3.08 0 0 0-3.07-2.83H8.67V.31H7.42v2.3H5.63a3.08 3.08 0 0 0-3.07 2.83a2 2 0 0 0 0 .25a3.07 3.07 0 0 0 3.07 3.07h4.74A1.59 1.59 0 0 1 12 10.35a2 2 0 0 1 0 .34a1.59 1.59 0 0 1-1.55 1.24h-4.7a1.59 1.59 0 0 1-1.55-1.24H2.69a3.08 3.08 0 0 0 3.06 2.73h1.67v2.27h1.25v-2.27h1.7a3.08 3.08 0 0 0 3.06-2.73v-.34A3.06 3.06 0 0 0 12.32 8" />
+          </svg>
+          <span class="text-lg font-semibold text-gray-900 dark:text-white">Total Revenue</span>
+        </div>
+        <!-- Assuming totalRevenue is a property in your component -->
+        @if(totalRevenue.status == true) {
+        <span class="text-2xl font-bold text-green-500 dark:text-green-500">{{totalRevenue.data}}</span>
+        <span class="text-sm font-medium text-indigo-700 dark:text-indigo-100">{{totalRevenue.period}}</span>
+        }@else {
+        <span class="text-2xl font-bold text-gray-900 dark:text-white">loading...</span>
+        }
+
+      </div>
+
+
+
+    </div>
+    <div
+      class="w-[400px] max-sm:w-[380px] h-32 bg-white shadow-md dark:bg-gray-600 rounded-md pt-4 pl-4 flex flex-col  space-y-2">
+      <div class="flex flex-col space-y-2  dark:text-white h-32">
+        <div class="flex items-center space-x-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48" class="stroke-current">
+            <g fill="none" stroke-linejoin="round" stroke-width="4">
+              <path d="M33.05 7H38a2 2 0 0 1 2 2v33a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h7v3h14V7z" />
+              <path stroke-linecap="round" d="M17 4h14v6H17zm10 15l-8 8.001h10.004l-8.004 8" />
+            </g>
+          </svg>
+          <span class="text-lg font-semibold text-gray-900 dark:text-white">Total Orders</span>
+        </div>
+
+        @if(totalOrder.status == true) {
+        <span class="text-2xl font-bold text-gray-900 dark:text-white">{{totalOrder.data}}</span>
+        }@else {
+        <span class="text-2xl font-bold text-gray-900 dark:text-white">loading...</span>
+        }
+        <span class="text-sm font-medium text-indigo-700 dark:text-indigo-100">Today</span>
+      </div>
+    </div>
+
+
+
+  </div>
+  <div
+    class="w-full h-auto md:flex md:flex-col md:space-x-2.5 max-sm:flex-col max-sm:justify-center  max-sm:space-y-2 ">
+    <div
+      class="w-full h-auto flex md:flex-row items-center max-sm:flex-col space-x-5 max-sm:space-y-5 max-sm:space-x-0 rounded-2xl text-center p-1 pt-3.5   ">
+
+      <div class="md:flex-2/3 max-sm:w-full p-4 overflow-visible shadow-md rounded-2xl bg-white dark:bg-gray-700">
+        <span class="text-gray-900 dark:text-white text-lg font-semibold">Sales Overview</span>
+        <apx-chart #chart [series]="chartOptions.series!" [chart]="chartOptions.chart!" [xaxis]="chartOptions.xaxis!"
+          [yaxis]="chartOptions.yaxis!" [dataLabels]="chartOptions.dataLabels!"
+          [plotOptions]="chartOptions.plotOptions!" [legend]="chartOptions.legend!"
+          [colors]="chartOptions.colors!"></apx-chart>
+      </div>
+      <div class=" md:flex-1/3 max-sm:w-full h-[400px] bg-white shadow-md dark:bg-gray-700 rounded-2xl flex flex-col justify-center items-center gap-4">
+        <!--The content below is only a placeholder and can be replaced.-->
+        <div class="text-lg text-gray-800 dark:text-white font-medium w-full text-center">Top Products</div>
+        <div id="chart">
+          <apx-chart
+  #pieChart
+  [series]="pieCharts.series!"
+  [chart]="pieCharts.chart!"
+  [labels]="pieCharts.labels"
+  [dataLabels]="pieCharts.dataLabels!"
+  [legend]="pieCharts.legend!"
+  [responsive]="pieCharts.responsive!">
+</apx-chart>
+        </div>
+      </div>
+    </div>
+    <div class="w-full h-auto p-2 md:p-4 mt-3">
+      <div class="w-full p-2 bg-white dark:bg-gray-900 rounded-lg shadow-md">
+
+
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg space-y-5">
+          <div
+            class="flex md:flex-row max-sm:flex-col md:items-center max-sm:space-y-4 md:justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-t-lg">
+            <div class="w-full text-center">
+              <label class="text-2xl max-sm:text-md font-semibold text-gray-900 dark:text-white">Customer List</label>
+            </div>
+            <div class="w-full">
+              <input type="text" id="search" [(ngModel)]="searchTerm" (ngModelChange)="onSearchChange($event)"
+                class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Search for Customer..." />
+            </div>
+          </div>
+          <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                <th scope="col" class="px-6 py-3">Name</th>
+                <th scope="col" class="px-6 py-3">Gender</th>
+                <th scope="col" class="px-6 py-3">Gmail</th>
+                <th scope="col" class="px-6 py-3">Phone Number</th>
+                <th scope="col" class="px-6 py-3">Location</th>
+                <th scope="col" class="px-6 py-3">Registered Date</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Loading state -->
+              <tr *ngIf="loading"
+                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
+                <td colspan="7" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">
+                  <span class="inline-flex items-center">
+                    <svg class="animate-spin h-5 w-5 mr-3 text-blue-600 dark:text-blue-400"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                      <path class="opacity-75" fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                      </path>
+                    </svg>
+                    Loading...
+                  </span>
+                </td>
+              </tr>
+              <!-- No data state -->
+              <tr *ngIf="!loading && (!filteredCustomerData || filteredCustomerData.length === 0)"
+                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
+                <td colspan="7" class="px-6 py-4 text-center">No data available</td>
+              </tr>
+              <!-- Data state -->
+              <ng-container *ngIf="!loading">
+                <tr *ngFor="let customer of filteredCustomerData"
+                  class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{ customer.name }}
+                  </th>
+                  <td class="px-6 py-4">{{ customer.gender }}</td>
+                  <td class="px-6 py-4">{{ customer.gmail }}</td>
+                  <td class="px-6 py-4">{{ customer.phoneNumber }}</td>
+                  <td class="px-6 py-4">{{ customer.location }}</td>
+                  <td class="px-6 py-4">{{ customer.registeredDate }}</td>
+                  
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
